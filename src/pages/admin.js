@@ -1,5 +1,8 @@
 import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
+// import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+
+import frLocale from "@fullcalendar/core/locales/fr";
 
 export default function Admin() {
   return (
@@ -278,8 +281,35 @@ export default function Admin() {
               </div>
               <div className="mt-8">
                 <FullCalendar
-                  initialView="dayGridWeek"
-                  plugins={[dayGridPlugin]}
+                  slotMinTime="07:00"
+                  slotMaxTime="20:30"
+                  locale={frLocale}
+                  initialView="timeGridWeek"
+                  plugins={[timeGridPlugin]}
+                  allDaySlot={false}
+                  editable={true}
+                  // headerToolbar={{
+                  //   left: "title,prev,next",
+                  //   center: "",
+                  //   right: "",
+                  // }}
+                  events={[
+                    {
+                      start: "2020-09-28 08:00",
+                      end: "2020-09-28 10:00",
+                      title: "Conf 1 ....",
+                    },
+                    {
+                      start: "2020-09-29 08:00",
+                      end: "2020-09-29 10:00",
+                      title: "Conf 2 ....",
+                    },
+                    {
+                      start: "2020-09-29 10:00",
+                      end: "2020-09-29 12:00",
+                      title: "Conf 3 ....",
+                    },
+                  ]}
                 />
               </div>
             </div>

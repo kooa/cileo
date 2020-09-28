@@ -1418,7 +1418,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fullcalendar/daygrid@npm:^5.3.2":
+"@fullcalendar/core@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@fullcalendar/core@npm:5.3.1"
+  dependencies:
+    "@fullcalendar/common": ~5.3.1
+    preact: ^10.0.5
+    tslib: ^2.0.0
+  checksum: 7e944a8a8827d4d36d27c5daf3c56054f90c0bf55031d520315e8034cb7bf4abc2791471379327f1f08ebad3136444036f7b84f235d0b9ae37855586aef935aa
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/daygrid@npm:^5.3.2, @fullcalendar/daygrid@npm:~5.3.1":
   version: 5.3.2
   resolution: "@fullcalendar/daygrid@npm:5.3.2"
   dependencies:
@@ -1438,6 +1449,17 @@ __metadata:
     react: ^16.7.0
     react-dom: ^16.7.0
   checksum: 027190e46c3398d041ac700540fbd06a07cb3f5a59e461bc7353c5c27b7729589393cedfbcef737a4cd51eda5bdae8f3c575f3a4a138acd0d8c4d7a61c7886c3
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/timegrid@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@fullcalendar/timegrid@npm:5.3.1"
+  dependencies:
+    "@fullcalendar/common": ~5.3.1
+    "@fullcalendar/daygrid": ~5.3.1
+    tslib: ^2.0.0
+  checksum: e806799713b98322feee8663c340bbe5440da1099947de9ae520f4043af73e6fdeb9ef554a286f4d1f5453d2c920b1724578c096697ba5705406ad62bf05a26a
   languageName: node
   linkType: hard
 
@@ -6268,6 +6290,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"preact@npm:^10.0.5":
+  version: 10.5.2
+  resolution: "preact@npm:10.5.2"
+  checksum: f104badce88de2ea3653836d74eaa90bed6a309fe0e3fcd7159c32613899765d246b45101c87cbc5d677ae8cf8c76d667b6f2b0c8a5e7f30ef7fef00731a3d25
+  languageName: node
+  linkType: hard
+
 "pretty-hrtime@npm:^1.0.3":
   version: 1.0.3
   resolution: "pretty-hrtime@npm:1.0.3"
@@ -7527,8 +7556,10 @@ fsevents@~2.1.2:
   version: 0.0.0-use.local
   resolution: "topsecret-with-nh@workspace:."
   dependencies:
+    "@fullcalendar/core": ^5.3.1
     "@fullcalendar/daygrid": ^5.3.2
     "@fullcalendar/react": ^5.3.1
+    "@fullcalendar/timegrid": ^5.3.1
     "@fullhuman/postcss-purgecss": ^3.0.0
     "@tailwindcss/ui": ^0.6.2
     autoprefixer: ^10.0.0
