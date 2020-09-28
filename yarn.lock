@@ -1409,6 +1409,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fullcalendar/common@npm:~5.3.1":
+  version: 5.3.1
+  resolution: "@fullcalendar/common@npm:5.3.1"
+  dependencies:
+    tslib: ^2.0.0
+  checksum: dd473accaf852544f4a2ecc87deea2e289a71cc8249c12eff35c1f5cca9cc83876010b96cff42824e8886d28ec2998259487db49033ffa1ff61a046585807050
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/daygrid@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@fullcalendar/daygrid@npm:5.3.2"
+  dependencies:
+    "@fullcalendar/common": ~5.3.1
+    tslib: ^2.0.0
+  checksum: c425b3c6a7565981ba03070acd24de71c6fcf29e81001734fced659845f1a93ee1a9833f4f5397965ccb724cd40d7be91a78a92330bea8d7dc7f5f6078e686af
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/react@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@fullcalendar/react@npm:5.3.1"
+  dependencies:
+    "@fullcalendar/common": ~5.3.1
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ^16.7.0
+    react-dom: ^16.7.0
+  checksum: 027190e46c3398d041ac700540fbd06a07cb3f5a59e461bc7353c5c27b7729589393cedfbcef737a4cd51eda5bdae8f3c575f3a4a138acd0d8c4d7a61c7886c3
+  languageName: node
+  linkType: hard
+
 "@fullhuman/postcss-purgecss@npm:^2.1.2":
   version: 2.3.0
   resolution: "@fullhuman/postcss-purgecss@npm:2.3.0"
@@ -2108,6 +2140,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-transform-require-ignore@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "babel-plugin-transform-require-ignore@npm:0.1.1"
+  checksum: a383129dec1a2e90de0512d3fb9cb1bd6b6936abd3e995476fbdc43709d37e903d626290688f7bc114102af909d7f16cc29cecfdc555160de4041931fb69d580
+  languageName: node
+  linkType: hard
+
 "balanced-match@npm:^1.0.0":
   version: 1.0.0
   resolution: "balanced-match@npm:1.0.0"
@@ -2225,7 +2264,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"braces@npm:~3.0.2":
+"braces@npm:^3.0.1, braces@npm:~3.0.2":
   version: 3.0.2
   resolution: "braces@npm:3.0.2"
   dependencies:
@@ -4894,6 +4933,16 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"micromatch@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "micromatch@npm:4.0.2"
+  dependencies:
+    braces: ^3.0.1
+    picomatch: ^2.0.5
+  checksum: 0cb0e11d647cbb65e398a0a8a1340a7fb751ae2722346219c435704cfac8b3275a94a6464236fe867f52ad46a24046d3bc4ac11b3d21ddb73bc44e27cf1e4904
+  languageName: node
+  linkType: hard
+
 "miller-rabin@npm:^4.0.0":
   version: 4.0.1
   resolution: "miller-rabin@npm:4.0.1"
@@ -5147,6 +5196,16 @@ fsevents@~2.1.2:
   version: 1.0.0
   resolution: "next-tick@npm:1.0.0"
   checksum: 18db63c447c6e65a23235b91da9ccdae53f74f9194cfbc71a1fd3170cdf81bd157d9676e47c2ea4ea5bd20e09fb019917b0a45d8e1a63e377175fc083f285234
+  languageName: node
+  linkType: hard
+
+"next-transpile-modules@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "next-transpile-modules@npm:4.1.0"
+  dependencies:
+    micromatch: ^4.0.2
+    slash: ^3.0.0
+  checksum: 2c06fec8e4354a80acfd65eecc7984a429b972deb11cf12f9709d3909de41fbafd9630016041b3eb326581727e93ea58e036f924600b75022967753401203faa
   languageName: node
   linkType: hard
 
@@ -5653,7 +5712,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"picomatch@npm:^2.0.4, picomatch@npm:^2.2.1":
+"picomatch@npm:^2.0.4, picomatch@npm:^2.0.5, picomatch@npm:^2.2.1":
   version: 2.2.2
   resolution: "picomatch@npm:2.2.2"
   checksum: 20fa75e0a58b39d83425b3db68744d5f6f361fd4fd66ec7745d884036d502abba0d553a637703af79939b844164b13e60eea339ccb043d7fbd74c3da2592b864
@@ -6930,6 +6989,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"slash@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "slash@npm:3.0.0"
+  checksum: fc3e8597d822ee3ba6cd76e9b001cd5be315f9b81c3a03a29bb611c003d1484e3b29a9e7bc020298fa669b585ff7c9268f44513f60c186216eb6af3111a3e838
+  languageName: node
+  linkType: hard
+
 "snapdragon-node@npm:^2.0.1":
   version: 2.1.1
   resolution: "snapdragon-node@npm:2.1.1"
@@ -7461,10 +7527,14 @@ fsevents@~2.1.2:
   version: 0.0.0-use.local
   resolution: "topsecret-with-nh@workspace:."
   dependencies:
+    "@fullcalendar/daygrid": ^5.3.2
+    "@fullcalendar/react": ^5.3.1
     "@fullhuman/postcss-purgecss": ^3.0.0
     "@tailwindcss/ui": ^0.6.2
     autoprefixer: ^10.0.0
+    babel-plugin-transform-require-ignore: ^0.1.1
     next: 9.5.3
+    next-transpile-modules: ^4.1.0
     postcss-preset-env: ^6.7.0
     react: 16.13.1
     react-dom: 16.13.1
@@ -7512,6 +7582,13 @@ fsevents@~2.1.2:
   version: 1.13.0
   resolution: "tslib@npm:1.13.0"
   checksum: 5dc3bdaea3b67c76ef4a14c28fcb2171da7bcf292fd9c59a260098729626b1ce766c52b588f08e324ed9a0c52ea8a93a815920f980d75981abc9d850fbf310fb
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "tslib@npm:2.0.1"
+  checksum: 7b42337a07f536c9650c72471cdf51317f07eb981692e91b8979fee3f6e20136a8f047e6ecdc5f2f3201132a6cc4e0096fa3c58655eba3803bf7fe739ccd088e
   languageName: node
   linkType: hard
 
