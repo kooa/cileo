@@ -3,7 +3,7 @@ import AdminLayout from "../../layouts/AdminLayout";
 export default function Contacts() {
   return (
     <AdminLayout>
-      <main className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <main className="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
         {/* <!--
             Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
             Read the documentation to get started: https://tailwindui.com/documentation

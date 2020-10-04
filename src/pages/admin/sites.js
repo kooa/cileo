@@ -3,7 +3,7 @@ import AdminLayout from "../../layouts/AdminLayout";
 export default function Sites() {
   return (
     <AdminLayout>
-      <main className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <main className="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
         {/* <!--
             Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
             Read the documentation to get started: https://tailwindui.com/documentation
@@ -34,7 +34,7 @@ export default function Sites() {
                         Strasbourg
                       </td>
                       <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Description centre strasbourg
+                        Description strasbourg
                       </td>
                       <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                         <a
@@ -60,7 +60,7 @@ export default function Sites() {
                         Colmar
                       </td>
                       <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Office de colmar
+                        Description colmar
                       </td>
                       <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                         <a
