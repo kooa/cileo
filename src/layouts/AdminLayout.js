@@ -54,7 +54,8 @@ export default function AdminLayout({ children }) {
                 />
               </div>
               <div className="hidden sm:-my-px sm:ml-6 space-x-8 sm:flex">
-                <AdminLink href="/admin">Accueil</AdminLink>
+                <AdminLink href="/">Accueil</AdminLink>
+                <AdminLink href="/admin">Calendrier</AdminLink>
                 <AdminLink href="/admin/sites">Vos sites</AdminLink>
                 <AdminLink href="/admin/contacts">Vos contacts</AdminLink>
               </div>
@@ -98,8 +99,8 @@ export default function AdminLayout({ children }) {
                 </div>
                 <Transition
                   show={isMenuShown}
-                  enter="transition ease-out duration-200"
-                  enterFrom="transform opacity-100 scale-100"
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
                   enterTo="transform opacity-100 scale-100"
                   leave="transition ease-in duration-75"
                   leaveFrom="transform opacity-100 scale-100"
@@ -183,7 +184,8 @@ export default function AdminLayout({ children }) {
     --> */}
         <div className={`${isMenuShown ? "block" : "hidden"} sm:hidden`}>
           <div className="pt-2 pb-3 space-y-1">
-            <AdminMobileLink href="/admin">Accueil</AdminMobileLink>
+            <AdminMobileLink href="/">Accueil</AdminMobileLink>
+            <AdminMobileLink href="/admin">Calendrier</AdminMobileLink>
             <AdminMobileLink href="/admin/sites">Vos sites</AdminMobileLink>
             <AdminMobileLink href="/admin/contacts">
               Vos contacts
