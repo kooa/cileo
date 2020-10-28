@@ -5,6 +5,10 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import frLocale from "@fullcalendar/core/locales/fr";
 import AdminLayout from "../../layouts/AdminLayout";
 
+import "@fullcalendar/common/main.css";
+import "@fullcalendar/daygrid/main.css";
+import "@fullcalendar/timegrid/main.css";
+
 export default function Admin() {
   return (
     // <!--
@@ -34,10 +38,10 @@ export default function Admin() {
                   <option selected>Strasbourg</option>
                   <option>Selestat</option>
                 </select>
-                <span class="inline-flex rounded-md shadow-sm mt-2">
+                <span className="inline-flex rounded-md shadow-sm mt-2">
                   <button
                     type="button"
-                    class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+                    className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
                   >
                     Créer un événement
                   </button>
