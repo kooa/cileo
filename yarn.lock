@@ -1573,6 +1573,54 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/bar@npm:^0.0.0":
+  version: 0.0.0
+  resolution: "@prisma/bar@npm:0.0.0"
+  checksum: b0998906cbf79c69a58efe15ca3010064f4b77eef21da63d90c8f00df3881316fcc7b5beb3e08e1a8bc8e966df8c6d15128bcbcc15de2631b0f72d0324ae9bad
+  languageName: node
+  linkType: hard
+
+"@prisma/cli@npm:^2.10.2":
+  version: 2.10.2
+  resolution: "@prisma/cli@npm:2.10.2"
+  dependencies:
+    "@prisma/bar": ^0.0.0
+    "@prisma/engines": 2.10.1-6-7d0087eadc7265e12d4b8d8c3516b02c4c965111
+  bin:
+    prisma: build/index.js
+    prisma2: build/index.js
+  checksum: 09ceee0e906ffd391f4b4ef0703a7c3a5e9aed9527a8d4dc8b28901577b20bda4c80cc957f6a96804947946b753354463e90d7da8f567ddc69aeb31d7f814fef
+  languageName: node
+  linkType: hard
+
+"@prisma/client@npm:^2.10.2":
+  version: 2.10.2
+  resolution: "@prisma/client@npm:2.10.2"
+  dependencies:
+    "@prisma/engines-version": 2.10.1-6-7d0087eadc7265e12d4b8d8c3516b02c4c965111
+  peerDependencies:
+    "@prisma/cli": "*"
+  peerDependenciesMeta:
+    "@prisma/cli":
+      optional: true
+  checksum: 8f475b1c673bc8fe097946fb24391b00384ce2e678bd18e7f34acf6ed9e90a1be806efcc44ef703f97b30083004e523b670c330626080f47245603cb469683d0
+  languageName: node
+  linkType: hard
+
+"@prisma/engines-version@npm:2.10.1-6-7d0087eadc7265e12d4b8d8c3516b02c4c965111":
+  version: 2.10.1-6-7d0087eadc7265e12d4b8d8c3516b02c4c965111
+  resolution: "@prisma/engines-version@npm:2.10.1-6-7d0087eadc7265e12d4b8d8c3516b02c4c965111"
+  checksum: d9631fb8a6480170414d0523afdf71cc0f500a9a5b40d59e0e44e938940c4c8164dd703c3183c743136651da366b867df7454ac1525fbbf3fc50818eeef03bb3
+  languageName: node
+  linkType: hard
+
+"@prisma/engines@npm:2.10.1-6-7d0087eadc7265e12d4b8d8c3516b02c4c965111":
+  version: 2.10.1-6-7d0087eadc7265e12d4b8d8c3516b02c4c965111
+  resolution: "@prisma/engines@npm:2.10.1-6-7d0087eadc7265e12d4b8d8c3516b02c4c965111"
+  checksum: 04d21bba01fc36ce2a1bdbb284279e19b3e879ed22f5793858ace9722a19ed574387e9f0356598b3002b3f4ccd43319d24c67e4f7a29f5325231f07213ed526a
+  languageName: node
+  linkType: hard
+
 "@tailwindcss/custom-forms@npm:^0.2.1":
   version: 0.2.1
   resolution: "@tailwindcss/custom-forms@npm:0.2.1"
@@ -7858,6 +7906,8 @@ fsevents@~2.1.2:
     "@fullcalendar/timegrid": ^5.3.1
     "@fullhuman/postcss-purgecss": ^3.0.0
     "@headlessui/react": ^0.1.3
+    "@prisma/cli": ^2.10.2
+    "@prisma/client": ^2.10.2
     "@tailwindcss/ui": ^0.6.2
     autoprefixer: ^10.0.0
     babel-plugin-transform-require-ignore: ^0.1.1
