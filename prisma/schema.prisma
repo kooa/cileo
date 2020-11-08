@@ -219,17 +219,17 @@ model TiersLocalisation {
 
 // Les commentaires liés à un atelier suite au déroulement de celui ci
 model WorkshopComments {
-  id             Int          @id @default(autoincrement())
+  id             Int           @id @default(autoincrement())
   order          Int // pour conserver l'ordre du file de conversation
   comment        String
   workshopId     Int
-  workshop       Workshop     @relation(fields: [workshopId], references: [id])
-  workshopUserId Int
-  workshopUser   WorkshopUser @relation(fields: [workshopUserId], references: [id])
-  User           User         @relation(fields: [userId], references: [id])
+  workshop       Workshop      @relation(fields: [workshopId], references: [id])
+  User           User          @relation(fields: [userId], references: [id])
   userId         Int
-  createdAt      DateTime     @default(now())
+  createdAt      DateTime      @default(now())
   updatedAt      DateTime
+  WorkshopUser   WorkshopUser? @relation(fields: [workshopUserId], references: [id])
+  workshopUserId Int?
 }
 
 // Description du résumé d'un atelier par son ou ses propriétaires
