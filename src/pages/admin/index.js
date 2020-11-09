@@ -1,6 +1,5 @@
 import { useState } from "react";
-import safeJsonStringify from 'safe-json-stringify';
-
+import { toJson } from "../../tools/tools";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import frLocale from "@fullcalendar/core/locales/fr";
@@ -11,7 +10,7 @@ import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 import { db } from "../../prisma";
 
-export default function Admin({ role }) {
+export default function Admin({ role, user }) {
   return (
     // <!--
     //   Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
@@ -58,7 +57,10 @@ export default function Admin({ role }) {
           <div className="py-6">
             <div className="mt-8">
               {role.libelle}
+              <br />
               {role.createdAt}
+              <br />
+              {user[0].firstname}
               <br />
               <FullCalendar
                 slotMinTime="07:00"
@@ -96,17 +98,15 @@ export default function Admin({ role }) {
 
 export async function getServerSideProps() {
   const role = await db.role.findOne({ where: { code: "ADMIN" } });
-  const data = getData(role);
+  const dataRole = toJson(role);
+
+  const user = await db.user.findMany({ orderBy: { createdAt: "asc" } });
+  const dataUser = toJson(user);
 
   return {
     props: {
-      role: data,
+      role: dataRole,
+      user: dataUser,
     },
   };
-}
-
-
-function getData(data){
-  const stringifiedData = safeJsonStringify(data);
-  return JSON.parse(stringifiedData);
 }
