@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -73,8 +73,6 @@ model Tiers {
   tiersLocalisation TiersLocalisation[]
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
-  createdBy         Int
-  updatedBy         Int
 }
 
 // Liens entre les tiers et les utilisateurs permet de rattache un utilisateur à un ou plusieurs tiers

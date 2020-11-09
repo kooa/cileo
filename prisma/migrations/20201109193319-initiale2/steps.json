@@ -1,0 +1,19 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Tiers",
+      "field": "createdBy",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Tiers",
+      "field": "updatedBy",
+      "type": "Int",
+      "arity": "Required"
+    }
+  ]
+}
