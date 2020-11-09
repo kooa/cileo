@@ -7092,6 +7092,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"safe-json-stringify@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "safe-json-stringify@npm:1.2.0"
+  checksum: 0b93f8dc50cff28143f69548f79ba06e5f6b41c3846a7edcf82878f3f93f8b438992474252b425ddc20834b298d22b92a7e578578bf7cf6d3d2d5560bcc17540
+  languageName: node
+  linkType: hard
+
 "safe-regex@npm:^1.1.0":
   version: 1.1.0
   resolution: "safe-regex@npm:1.1.0"
@@ -7916,6 +7923,7 @@ fsevents@~2.1.2:
     postcss-preset-env: ^6.7.0
     react: ^17.0.1
     react-dom: ^17.0.1
+    safe-json-stringify: ^1.2.0
     tailwindcss: ^1.8.10
   languageName: unknown
   linkType: soft
