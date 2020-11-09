@@ -18,8 +18,7 @@ model Role {
   User      User[]
   RoleUser  RoleUser[]
   createdAt DateTime   @default(now())
-  updatedAt DateTime
-
+  updatedAt DateTime   @updatedAt
 }
 
 // Définition des utilisateurs de l'application
@@ -39,7 +38,7 @@ model User {
   UserTheme        UserTheme[]
   WorkshopComments WorkshopComments[]
   createdAt        DateTime           @default(now())
-  updatedAt        DateTime
+  updatedAt        DateTime           @updatedAt
 }
 
 // Liens entre les utilisateurs de l'application et les rôles permet de rattache un utilisateur à un ou plusieurs roles
@@ -50,7 +49,7 @@ model RoleUser {
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 // Définition des tiers (clients de l'application) association, collectivité teritoriale autres ...
@@ -66,7 +65,7 @@ model Tiers {
   User              User[]
   tiersLocalisation TiersLocalisation[]
   createdAt         DateTime            @default(now())
-  updatedAt         DateTime
+  updatedAt         DateTime            @updatedAt
 }
 
 // Liens entre les tiers et les utilisateurs permet de rattache un utilisateur à un ou plusieurs tiers
@@ -77,7 +76,7 @@ model TiersUser {
   userId    Int
   tiersId   Int
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 //Description des personnes contactables chez un tiers
@@ -88,7 +87,7 @@ model TiersContact {
   tel       String?
   email     String   @unique
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 // Définition des ateliers
@@ -109,7 +108,7 @@ model Workshop {
   WorkshopComments WorkshopComments[]
   WorkshopSummary  WorkshopSummary[]
   createdAt        DateTime           @default(now())
-  updatedAt        DateTime
+  updatedAt        DateTime           @updatedAt
 }
 
 // Définition des statuts des ateliers, à venir, echu autres... si jamais, on pourrait aussi le voir comme un ENUM à voir
@@ -120,7 +119,7 @@ model WorkshopStatus {
   libelle   String
   workshop  Workshop[]
   createdAt DateTime   @default(now())
-  updatedAt DateTime
+  updatedAt DateTime   @updatedAt
 }
 
 // Lien entre un atelier et les utilisateurs(participants à l'atelier)
@@ -133,7 +132,7 @@ model WorkshopUser {
   owner            Boolean            @default(false) // propriétaire de l'atelier ?
   WorkshopComments WorkshopComments[]
   createdAt        DateTime           @default(now())
-  updatedAt        DateTime
+  updatedAt        DateTime           @updatedAt
 }
 
 // Description des thématiques d'ateliers
@@ -145,7 +144,7 @@ model Theme {
   UserTheme          UserTheme[]
   ExternalPostsTheme ExternalPostsTheme[]
   createdAt          DateTime             @default(now())
-  updatedAt          DateTime
+  updatedAt          DateTime             @updatedAt
 }
 
 // Lien entre un atelier et les thématiques, un atelier peut avoir 1 ou plusieurs thématiques
@@ -156,7 +155,7 @@ model WorkshopTheme {
   themeId    Int
   theme      Theme    @relation(fields: [themeId], references: [id])
   createdAt  DateTime @default(now())
-  updatedAt  DateTime
+  updatedAt  DateTime @updatedAt
 }
 
 // Lien entre un utilisateur et les thématiques d'atelier qui l'intérresse, un utilisateur peut avoir entre 0 et n thématiques préférées
@@ -167,7 +166,7 @@ model UserTheme {
   themeId   Int
   theme     Theme    @relation(fields: [themeId], references: [id])
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 // Description des articles ailleurs sur le web mis à disposition par les administrateurs à l'attention des autres utilisateurs de l'application.
@@ -178,7 +177,7 @@ model ExternalPost {
   url                String
   ExternalPostsTheme ExternalPostsTheme[]
   createdAt          DateTime             @default(now())
-  updatedAt          DateTime
+  updatedAt          DateTime             @updatedAt
 }
 
 // Lien entre un Article externe et une ou plusieurs thématiques
@@ -189,7 +188,7 @@ model ExternalPostsTheme {
   themeId        Int
   theme          Theme        @relation(fields: [themeId], references: [id])
   createdAt      DateTime     @default(now())
-  updatedAt      DateTime
+  updatedAt      DateTime     @updatedAt
 }
 
 // Description des localisations où se tiennent les ateliers
@@ -203,7 +202,7 @@ model Localisation {
   tiersLocalisation TiersLocalisation[]
   Workshop          Workshop[]
   createdAt         DateTime            @default(now())
-  updatedAt         DateTime
+  updatedAt         DateTime            @updatedAt
 }
 
 // Lien entre un tiers et une ou plusieurs localisation
@@ -214,7 +213,7 @@ model TiersLocalisation {
   localisationId Int
   localisation   Localisation @relation(fields: [localisationId], references: [id])
   createdAt      DateTime     @default(now())
-  updatedAt      DateTime
+  updatedAt      DateTime     @updatedAt
 }
 
 // Les commentaires liés à un atelier suite au déroulement de celui ci
@@ -227,7 +226,7 @@ model WorkshopComments {
   User           User          @relation(fields: [userId], references: [id])
   userId         Int
   createdAt      DateTime      @default(now())
-  updatedAt      DateTime
+  updatedAt      DateTime      @updatedAt
   WorkshopUser   WorkshopUser? @relation(fields: [workshopUserId], references: [id])
   workshopUserId Int?
 }
@@ -240,7 +239,7 @@ model WorkshopSummary {
   workshopId Int
   worshop    Workshop @relation(fields: [workshopId], references: [id])
   createdAt  DateTime @default(now())
-  updatedAt  DateTime
+  updatedAt  DateTime @updatedAt
 }
 
 // Description des documents associés à un workshop et disponibles pour les participants
@@ -250,5 +249,5 @@ model WorkshopDocument {
   description String
   url         String
   createdAt   DateTime @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime @updatedAt
 }
