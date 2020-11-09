@@ -31,7 +31,7 @@ model User {
   firstname        String
   email            String             @unique
   tel              String?
-  avatar           String //stockage d'une url je pense en attendant que prisma intègre les binary  https://github.com/prisma/prisma/issues/1747
+  avatar           String? //stockage d'une url je pense en attendant que prisma intègre les binary  https://github.com/prisma/prisma/issues/1747
   RoleUser         RoleUser[]
   Role             Role               @relation(fields: [roleId], references: [id])
   roleId           Int
