@@ -8,8 +8,9 @@ import AdminLayout from "../../layouts/AdminLayout";
 import "@fullcalendar/common/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
+import { db } from "../../prisma";
 
-export default function Admin() {
+export default function Admin({ roleLabel }) {
   return (
     // <!--
     //   Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
@@ -55,6 +56,8 @@ export default function Admin() {
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="py-6">
             <div className="mt-8">
+              {roleLabel}
+              <br />
               <FullCalendar
                 slotMinTime="07:00"
                 slotMaxTime="20:30"
@@ -87,4 +90,14 @@ export default function Admin() {
       </main>
     </AdminLayout>
   );
+}
+
+export async function getServerSideProps() {
+  const role = await db.role.findOne({ where: { code: "ADMIN" } });
+
+  return {
+    props: {
+      roleLabel: role.libelle,
+    },
+  };
 }
