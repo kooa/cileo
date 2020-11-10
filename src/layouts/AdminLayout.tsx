@@ -3,7 +3,12 @@ import { useRouter } from "next/router";
 import { Transition } from "@headlessui/react";
 import { useMemo, useState } from "react";
 
-function AdminLink({ href, className, activeClassName, children }) {
+function AdminLink({
+  href,
+  className,
+  activeClassName,
+  children,
+}: React.ComponentProps<"a"> & { href: string; activeClassName?: string }) {
   const router = useRouter();
   let isActive = router.pathname === href;
 
@@ -20,7 +25,12 @@ function AdminLink({ href, className, activeClassName, children }) {
   );
 }
 
-function SvgLink({ href, activeClassName, className, ...props }) {
+function SvgLink({
+  href,
+  activeClassName,
+  className,
+  ...props
+}: React.ComponentProps<"svg"> & { href?: string; activeClassName?: string }) {
   const router = useRouter();
   let isActive = router.pathname === href;
 
@@ -146,7 +156,7 @@ export default function AdminLayout({ children }) {
         ),
       },
     ];
-  });
+  }, []);
 
   return (
     <div className="h-screen bg-white overflow-hidden flex">

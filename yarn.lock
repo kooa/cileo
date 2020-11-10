@@ -1671,6 +1671,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^14.14.7":
+  version: 14.14.7
+  resolution: "@types/node@npm:14.14.7"
+  checksum: 4fc8434bfe81c2a3102fa76777712ecee9e9177d43ec5929ba0dfd5a77a6c459cf10a37df64ea880a328f06973f6210eabf04b312428e309b2e8998147a6cd63
+  languageName: node
+  linkType: hard
+
+"@types/prop-types@npm:*":
+  version: 15.7.3
+  resolution: "@types/prop-types@npm:15.7.3"
+  checksum: bd0eab69d5120ad3784d0c9985f902653d5924707a7f2b3702a330e762dfd61b6494954cb54ad0c52b918ffd6f1e7e27c9270e4442bc15250de348596f2f60cb
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:^16.9.9":
+  version: 16.9.9
+  resolution: "@types/react-dom@npm:16.9.9"
+  dependencies:
+    "@types/react": "*"
+  checksum: d92c166f5bcd483f175311eec9c472893216d486106a5b5402eb293840c0b0d1aafb484a3fe3f0f4622ae1f6dff46c9fe970873d4dac7fdf70a50931d3cab4a0
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:^16.9.56":
+  version: 16.9.56
+  resolution: "@types/react@npm:16.9.56"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.0.2
+  checksum: 139867e2b3d577723b9361234f105d0cf1b143202f51fef207355332f972dd74030cfb3918037cb311eefd203ee06e0a370c37755204eefdd35734f0fde070a1
+  languageName: node
+  linkType: hard
+
 "@webassemblyjs/ast@npm:1.9.0":
   version: 1.9.0
   resolution: "@webassemblyjs/ast@npm:1.9.0"
@@ -3208,6 +3241,13 @@ __metadata:
     cssnano-preset-simple: 1.2.0
     postcss: ^7.0.32
   checksum: b34c832d96d7b60a3f98d7cb56560b72ba54572ead7f4c2aa35ad3d601e8b00a2a8cd3eb46ad8594868e812a7d6202b2c0a769d07724cfdac2bd907549afa9f9
+  languageName: node
+  linkType: hard
+
+"csstype@npm:^3.0.2":
+  version: 3.0.4
+  resolution: "csstype@npm:3.0.4"
+  checksum: 90cd2ff9aced9049010c5c69470b30643761d511b4250f6ce2bbdbab23229822c325fd841be6066a94a9ba800112026e3c046be879cd44a066e8705991cdc700
   languageName: node
   linkType: hard
 
@@ -7923,6 +7963,9 @@ fsevents@~2.1.2:
     "@prisma/cli": ^2.10.2
     "@prisma/client": ^2.10.2
     "@tailwindcss/ui": ^0.6.2
+    "@types/node": ^14.14.7
+    "@types/react": ^16.9.56
+    "@types/react-dom": ^16.9.9
     autoprefixer: ^10.0.0
     babel-plugin-transform-require-ignore: ^0.1.1
     clsx: ^1.1.1
@@ -7933,6 +7976,7 @@ fsevents@~2.1.2:
     react-dom: ^17.0.1
     safe-json-stringify: ^1.2.0
     tailwindcss: ^1.8.10
+    typescript: ^4.0.5
   languageName: unknown
   linkType: soft
 
@@ -8034,6 +8078,26 @@ fsevents@~2.1.2:
   version: 0.0.6
   resolution: "typedarray@npm:0.0.6"
   checksum: c9ef0176aaf32593514c31e5c6edc1db970847aff6e1f0a0570a6ac0cc996335792f394c2fcec59cc76691d22a01888ea073a2f3c6930cfcf7c519addf4e2ad7
+  languageName: node
+  linkType: hard
+
+typescript@^4.0.5:
+  version: 4.0.5
+  resolution: "typescript@npm:4.0.5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: ce94d4bbb914cc9d6fbd42e1476ab18c3292b262b8ba7ba76cd167a858545207a604e75bf1efbb75b8654c8f85deaa19795c3ef00098d7612855139b4ecc0240
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.0.5#builtin<compat/typescript>":
+  version: 4.0.5
+  resolution: "typescript@patch:typescript@npm%3A4.0.5#builtin<compat/typescript>::version=4.0.5&hash=5b02a2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: d4be0bd2a2050b2d7b132cb2a40329178f181543e9d2ac6d1f06babd9f047208558a736a7effdeb28759ae2e815f070b61d10ee2f02cc93a6221a1490f21ffce
   languageName: node
   linkType: hard
 
