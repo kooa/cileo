@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { toJson } from "../../tools/tools";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -11,7 +10,8 @@ import "@fullcalendar/timegrid/main.css";
 
 import { db } from "../../prisma";
 
-export default function CalendarPage({ role, user }) {
+// TODO: faire les types de role & user
+export default function CalendarPage({ role, user }: { role: any; user: any }) {
   return (
     // <!--
     //   Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.

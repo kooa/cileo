@@ -3,7 +3,11 @@ import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function PatientLink({ href, as, children }) {
+function PatientLink({
+  href,
+  as,
+  children,
+}: React.PropsWithChildren<{ href: string; as?: string }>) {
   const router = useRouter();
 
   const className = useMemo(() => {
@@ -19,7 +23,11 @@ function PatientLink({ href, as, children }) {
   );
 }
 
-function PatientMobileLink({ href, as, children }) {
+function PatientMobileLink({
+  href,
+  as,
+  children,
+}: React.PropsWithChildren<{ href: string; as?: string }>) {
   const router = useRouter();
 
   const className = useMemo(() => {
@@ -35,7 +43,9 @@ function PatientMobileLink({ href, as, children }) {
   );
 }
 
-export default function PatientLayout({ children }) {
+export default function PatientLayout({
+  children,
+}: React.PropsWithChildren<{}>) {
   const [isMenuShown, setIsMenuShown] = useState(false);
   return (
     <div>
