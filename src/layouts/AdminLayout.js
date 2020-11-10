@@ -7,7 +7,6 @@ export default function AdminLayout({ children }) {
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div className="h-screen bg-white overflow-hidden flex">
-      {/* <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. --> */}
       <div className={`${!isOpen ? "hidden" : ""} md:hidden`}>
         <div className="fixed inset-0 z-40 flex">
           <Transition
@@ -20,21 +19,9 @@ export default function AdminLayout({ children }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            {/* <div className="fixed inset-0"> */}
             <div className="absolute inset-0 bg-gray-600 opacity-75" />
-            {/* </div> */}
           </Transition>
 
-          {/* <!--
-        Off-canvas menu, show/hide based on off-canvas menu state.
-
-        Entering: "transition ease-in-out duration-300 transform"
-          From: "-translate-x-full"
-          To: "translate-x-0"
-        Leaving: "transition ease-in-out duration-300 transform"
-          From: "translate-x-0"
-          To: "-translate-x-full"
-      --> */}
           <Transition
             show={isOpen}
             className="relative max-w-xs w-full bg-white pt-5 pb-4 flex-1 flex flex-col"
