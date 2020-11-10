@@ -1,0 +1,292 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Définition des Rôles des utilisateurs de l'application à vor si on ne doit pas mettre une ENUM table RoleUser à modifier si jamais
+model Role {
+  id        Int        @id @default(autoincrement())
+  code      String     @unique
+  libelle   String     @unique
+  User      User[]
+  RoleUser  RoleUser[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  createdBy Int
+  updatedBy Int
+
+}
+
+// Définition des utilisateurs de l'application
+model User {
+  id               Int                @id @default(autoincrement())
+  lastname         String
+  firstname        String
+  email            String             @unique
+  tel              String?
+  avatar           String? //stockage d'une url je pense en attendant que prisma intègre les binary  https://github.com/prisma/prisma/issues/1747
+  RoleUser         RoleUser[]
+  Role             Role               @relation(fields: [roleId], references: [id])
+  roleId           Int
+  Tiers            Tiers[]
+  TiersUser        TiersUser[]
+  WorkshopUser     WorkshopUser[]
+  UserTheme        UserTheme[]
+  WorkshopComments WorkshopComments[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  createdBy        Int
+  updatedBy        Int
+}
+
+// Liens entre les utilisateurs de l'application et les rôles permet de rattache un utilisateur à un ou plusieurs roles
+model RoleUser {
+  id        Int      @id @default(autoincrement())
+  role      Role     @relation(fields: [roleId], references: [id])
+  roleId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy Int
+  updatedBy Int
+}
+
+// Définition des tiers (clients de l'application) association, collectivité teritoriale autres ...
+model Tiers {
+  id                Int                 @id @default(autoincrement())
+  raisonSociale     String              @unique
+  adresse           String
+  codePostal        String
+  ville             String
+  tel               String?
+  email             String              @unique
+  TiersUser         TiersUser[]
+  User              User[]
+  tiersLocalisation TiersLocalisation[]
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  createdBy         Int
+  updatedBy         Int
+}
+
+// Liens entre les tiers et les utilisateurs permet de rattache un utilisateur à un ou plusieurs tiers
+model TiersUser {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  tiers     Tiers    @relation(fields: [tiersId], references: [id])
+  userId    Int
+  tiersId   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy Int
+  updatedBy Int
+}
+
+//Description des personnes contactables chez un tiers
+model TiersContact {
+  id        Int      @id @default(autoincrement())
+  firstname String
+  lastname  String
+  tel       String?
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy Int
+  updatedBy Int
+}
+
+// Définition des ateliers
+model Workshop {
+  id               Int                @id @default(autoincrement())
+  start            DateTime
+  end              DateTime
+  title            String
+  description      String
+  nbPlace          Int
+  workshopStatus   WorkshopStatus     @relation(fields: [workshopStatusId], references: [id])
+  workshopStatusId Int
+  WorkshopUser     WorkshopUser[]
+  WorkshopTheme    WorkshopTheme[]
+  broadcastUrl     String? // si le workshop se tient en ligne ou en physique et en ligne
+  localisation     Localisation?      @relation(fields: [localisationId], references: [id]) //non obligtoire si atelier uniquement en ligne
+  localisationId   Int?
+  WorkshopComments WorkshopComments[]
+  WorkshopSummary  WorkshopSummary[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  createdBy        Int
+  updatedBy        Int
+}
+
+// Définition des statuts des ateliers, à venir, echu autres... si jamais, on pourrait aussi le voir comme un ENUM à voir
+model WorkshopStatus {
+  id        Int        @id @default(autoincrement())
+  code      String // je sais que je met un code ici car on sera surement amené à utiliser programatiquement ces valeurs, à virer si on passe sur un ENUM
+  // Si on passe sur un ENUM il faut changer la table Workshop 'CRE, ATTENTE (que le nombre de place soit atteint), VALIDE (nombre de place min atteint),  ANNULE, ECHU'
+  libelle   String
+  workshop  Workshop[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  createdBy Int
+  updatedBy Int
+}
+
+// Lien entre un atelier et les utilisateurs(participants à l'atelier)
+model WorkshopUser {
+  id               Int                @id @default(autoincrement())
+  workshop         Workshop           @relation(fields: [workshopId], references: [id])
+  workshopId       Int
+  userId           Int
+  user             User               @relation(fields: [userId], references: [id])
+  owner            Boolean            @default(false) // propriétaire de l'atelier ?
+  WorkshopComments WorkshopComments[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  createdBy        Int
+  updatedBy        Int
+}
+
+// Description des thématiques d'ateliers
+model Theme {
+  id                 Int                  @id @default(autoincrement())
+  libelle            String
+  description        String?
+  WorkshopTheme      WorkshopTheme[]
+  UserTheme          UserTheme[]
+  ExternalPostsTheme ExternalPostsTheme[]
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  createdBy          Int
+  updatedBy          Int
+}
+
+// Lien entre un atelier et les thématiques, un atelier peut avoir 1 ou plusieurs thématiques
+model WorkshopTheme {
+  id         Int      @id @default(autoincrement())
+  workshop   Workshop @relation(fields: [workshopId], references: [id])
+  workshopId Int
+  themeId    Int
+  theme      Theme    @relation(fields: [themeId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  createdBy  Int
+  updatedBy  Int
+}
+
+// Lien entre un utilisateur et les thématiques d'atelier qui l'intérresse, un utilisateur peut avoir entre 0 et n thématiques préférées
+model UserTheme {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  themeId   Int
+  theme     Theme    @relation(fields: [themeId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy Int
+  updatedBy Int
+}
+
+// Description des articles ailleurs sur le web mis à disposition par les administrateurs à l'attention des autres utilisateurs de l'application.
+model ExternalPost {
+  id                 Int                  @id @default(autoincrement())
+  title              String
+  description        String?
+  url                String
+  ExternalPostsTheme ExternalPostsTheme[]
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  createdBy          Int
+  updatedBy          Int
+}
+
+// Lien entre un Article externe et une ou plusieurs thématiques
+model ExternalPostsTheme {
+  id             Int          @id @default(autoincrement())
+  externalPostId Int
+  externalPost   ExternalPost @relation(fields: [externalPostId], references: [id])
+  themeId        Int
+  theme          Theme        @relation(fields: [themeId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  createdBy      Int
+  updatedBy      Int
+}
+
+// Description des localisations où se tiennent les ateliers
+model Localisation {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  description       String? // info complémentaire genre "entrée derrière le batiment"
+  adresse           String
+  codePostal        String
+  ville             String
+  tiersLocalisation TiersLocalisation[]
+  Workshop          Workshop[]
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  createdBy         Int
+  updatedBy         Int
+}
+
+// Lien entre un tiers et une ou plusieurs localisation
+model TiersLocalisation {
+  id             Int          @id @default(autoincrement())
+  tiersId        Int
+  tiers          Tiers        @relation(fields: [tiersId], references: [id])
+  localisationId Int
+  localisation   Localisation @relation(fields: [localisationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  createdBy      Int
+  updatedBy      Int
+}
+
+// Les commentaires liés à un atelier suite au déroulement de celui ci
+model WorkshopComments {
+  id             Int           @id @default(autoincrement())
+  order          Int // pour conserver l'ordre du file de conversation
+  comment        String
+  workshopId     Int
+  workshop       Workshop      @relation(fields: [workshopId], references: [id])
+  User           User          @relation(fields: [userId], references: [id])
+  userId         Int
+  WorkshopUser   WorkshopUser? @relation(fields: [workshopUserId], references: [id])
+  workshopUserId Int?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  createdBy      Int
+  updatedBy      Int
+}
+
+// Description du résumé d'un atelier par son ou ses propriétaires
+model WorkshopSummary {
+  id         Int      @id @default(autoincrement())
+  title      String
+  content    String
+  workshopId Int
+  worshop    Workshop @relation(fields: [workshopId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  createdBy  Int
+  updatedBy  Int
+}
+
+// Description des documents associés à un workshop et disponibles pour les participants
+model WorkshopDocument {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  url         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   Int
+  updatedBy   Int
+}
