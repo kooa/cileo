@@ -11,7 +11,7 @@ import "@fullcalendar/timegrid/main.css";
 
 import { db } from "../../prisma";
 
-export default function Admin({ role, user }) {
+export default function CalendarPage({ role, user }) {
   return (
     // <!--
     //   Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
