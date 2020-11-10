@@ -58,7 +58,7 @@ const linkClassNames = {
     "group flex items-center px-3 py-2 text-sm leading-5 font-medium text-purple-600 bg-purple-50 border-l-4 border-purple-600 focus:outline-none focus:bg-purple-100 transition ease-in-out duration-150",
 };
 
-export default function AdminLayout({ children }) {
+export default function AdminLayout({ children }: React.PropsWithChildren<{}>) {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = useMemo(() => {
@@ -383,7 +383,7 @@ export default function AdminLayout({ children }) {
             <div className="flex-1 flex justify-between px-4 md:px-0">
               <div className="flex-1 flex">
                 <form className="w-full flex md:ml-0" action="#" method="GET">
-                  <label for="search_field" className="sr-only">
+                  <label htmlFor="search_field" className="sr-only">
                     Recherche
                   </label>
                   <div className="relative w-full text-gray-400 focus-within:text-gray-600">
@@ -441,7 +441,7 @@ export default function AdminLayout({ children }) {
 
         <main
           className="flex-1 overflow-y-auto focus:outline-none"
-          tabIndex="0"
+          tabIndex={0}
         >
           {children}
         </main>
