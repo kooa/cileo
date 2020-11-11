@@ -1,6 +1,7 @@
 export interface TableProps {
   datas?: Record<string, any>[] | undefined;
   columns: ColumnState[];
+  onCreate?() :void;
   onEdit(id:number): void,
   onDelete(id:number):void
 }
@@ -11,13 +12,14 @@ export interface ColumnState {
 }
 
 
-export default function Table({ columns, datas, onEdit, onDelete }:TableProps) {
+export default function Table({ columns, datas,onCreate, onEdit, onDelete }:TableProps) {
   return (
     <>
       <div className="mb-3">
         <button
           type="button"
           className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition ease-in-out duration-150"
+          onClick={() => onCreate}
         >
           <svg
             className="-ml-0.5 mr-2 h-4 w-4"
@@ -56,12 +58,27 @@ export default function Table({ columns, datas, onEdit, onDelete }:TableProps) {
                     <th key="deleteCol" className="px-6 py-3 bg-gray-50"></th>
                   </tr>
                 </thead>
-                <TableBody
-                  columns={columns}
-                  datas={datas}
-                  onEdit={onEdit}
-                  onDelete={onDelete}
-                />
+                <tbody>
+                {datas && datas.map((data:any) => {
+                  const cell = columns.map((column:ColumnState) => {
+                    return (
+                      <td key={column.key} className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                        {data[column.key]}
+                      </td>
+                    );
+                  });
+                  // Ajout des cell edit et delete en fin de row
+                  return (<tr key={data.id} className="bg-white">
+                            {cell}
+                            <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                                <a href="#" className="text-green-400 hover:text-indigo-900" onClick={() => onEdit(data.id)}>Editer</a>
+                            </td>
+                            <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                                <a href="#" className="text-red-600 hover:text-red-900" onClick={()=>onDelete(data.id)}>Supprimer</a>
+                            </td>
+                          </tr>);
+                })}
+                </tbody>
               </table>
             </div>
           </div>
@@ -71,7 +88,7 @@ export default function Table({ columns, datas, onEdit, onDelete }:TableProps) {
   );
 }
 
-function TableBody({ columns, datas, onEdit, onDelete }:TableProps) {
+/*function TableBody( columns:ColumnState[], datas: Record<string, any>[] | undefined, onEdit:any, onDelete:any) {
   if (datas)
   {
     const body = datas.map((data:any) => {
@@ -85,7 +102,7 @@ function TableBody({ columns, datas, onEdit, onDelete }:TableProps) {
       return (<tr key={data.id} className="bg-white">
                 {rows}
                 <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                    <a href="#" className="text-green-400 hover:text-indigo-900">Editer</a>
+                    <a href="#" className="text-green-400 hover:text-indigo-900" onClick={() => onEdit(data.id)}>Editer</a>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                     <a href="#" className="text-red-600 hover:text-red-900" onClick={()=>onDelete(data.id)}>Supprimer</a>
@@ -98,4 +115,4 @@ function TableBody({ columns, datas, onEdit, onDelete }:TableProps) {
 
   return null;
 
-}
+}*/
