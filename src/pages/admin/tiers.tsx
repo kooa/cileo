@@ -8,16 +8,16 @@ interface TiersProps {
   tiers?: Tiers[];
 }
 
-const columns :ColumnState[] = [
-  { key: "raisonSociale",label:"Raison sociale" },
-  { key: "adresse", label:"Adresse" },
-  { key: "codePostal", label:"Code postal" },
-  { key: "ville",label:"Ville" },
-  { key: "tel",label:"Tel" },
-  { key: "email",label:"Email" },
+const columns: ColumnState[] = [
+  { key: "raisonSociale", label: "Raison sociale" },
+  { key: "adresse", label: "Adresse" },
+  { key: "codePostal", label: "Code postal" },
+  { key: "ville", label: "Ville" },
+  { key: "tel", label: "Tel" },
+  { key: "email", label: "Email" },
 ];
 
-export default function TiersPage({ tiers }:TiersProps ) {
+export default function TiersPage({ tiers }: TiersProps) {
   return (
     <AdminLayout>
       <div className="pt-10 pb-2">
@@ -34,7 +34,12 @@ export default function TiersPage({ tiers }:TiersProps ) {
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div className="py-6">
               <div className="mt-8">
-                <Table columns={columns} datas={tiers} onEdit={onEdit} onDelete={onDelete} />
+                <Table
+                  columns={columns}
+                  datas={tiers}
+                  onEdit={onEdit}
+                  onDelete={onDelete}
+                />
               </div>
             </div>
           </div>
@@ -44,20 +49,20 @@ export default function TiersPage({ tiers }:TiersProps ) {
   );
 }
 
-function onCreate () {
-}
+function onCreate() {}
 
-function onEdit () {
-}
+function onEdit() {}
 
-function onDelete(tiersId:number){
-  console.log('delete',tiersId);
-   db.tiers.delete({where:{id:tiersId}})
+async function onDelete(tiersId: number) {
+  console.log("delete", tiersId);
+  //await db.tiers.delete({where:{id:tiersId}}); PB 1
 }
 
 export async function getServerSideProps() {
   // reste à filtrer sur les tiers reliés à l'utilisateur connecté via le lien TIersUser
   const tiers = await db.tiers.findMany();
+  const tiersFiltered = await db.user.findOne({ where: { id: 2 } }).TiersUser(); // a remplacer pa rle vrai user connecté //PB2
+  console.log("user ", tiersFiltered);
   const dataTiers = toJson(tiers);
   return {
     props: {
